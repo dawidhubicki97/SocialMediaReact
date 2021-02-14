@@ -1,0 +1,96 @@
+.profile__image{
+    object-fit: contain;
+    max-width: 20vw ;
+    max-height: 20vh ;
+    transition: opacity .5s;
+    opacity: 1;
+    float:left;
+    margin-top: 20px;
+  }
+
+  .profile__headerUserName{
+    display:inline;
+    font-size: xx-large;
+    font-weight: bold;
+    padding-left: 30px;
+  }
+  .profile__header{
+    border-bottom: 1px solid lightgray;
+    display: inline-block;
+    width:100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+  }
+  .profile__bio{
+    font-size: large;   
+    padding-left: 190px;
+
+  }
+  .profile__following{
+    font-size: large;   
+    padding-left: 3%;
+    display: inline;
+
+  }
+  .profile__followers{
+    font-size: large;   
+    padding-left: 20%;
+    display: inline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .profile__container{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1240px;
+  }
+
+  .imageContainer{
+    border-radius: 50%;
+    display: inline-block;
+    float:left;
+  }
+  .profile__followButton{
+    margin-left: 10px;
+  }
+  
+
+  .imageContainer div {
+      
+    height:160px;
+    width:160px;
+    max-width: 100%;
+    vertical-align: top;
+  }
+  .imageContainer img:hover {
+    border-radius: 50%;
+    max-width: 100%;
+    background-color: black;
+    opacity: .5;
+  }
+  @media (max-width:480px){
+    .profile__headerUserName{
+      padding-left: 5px;
+    }
+    .profile__followers,.profile__following,.profile__bio{
+      padding-left: 5px;
+      display: flex;
+    }
+    .profile__image{
+      max-width: 16vw ;
+      max-height: 18vh ;
+
+    }
+    .profile__bio{
+      margin-top: 50px;
+      font-size: medium;   
+    }
+
+  }
