@@ -86,6 +86,7 @@ export default function ImageUpload() {
             </Button>
             <progress value={progress}></progress>
             </div>
+
         </div>
     )
 }
