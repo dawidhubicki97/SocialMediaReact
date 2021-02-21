@@ -1,7 +1,8 @@
 import React, {useRef,useState} from 'react'
-import {Form,Button,Card,Alert} from 'react-bootstrap'
+import {Button} from '@material-ui/core'
 import {useAuth} from '../contexts/AuthContext'
 import {Link,useHistory} from 'react-router-dom'
+import './Login.css'
 
 
 export default function Login() {
@@ -34,24 +35,24 @@ export default function Login() {
 
     return (
         <div>
-            <Card>
-                <Card.Body>
+            <div className="login__card">
+                <div className="login__cardBody">
      
                     <h2 className="text-center mb-4">Zaloguj się</h2>
-                    {error && <Alert variant="danger">{error}</Alert>}
-                </Card.Body>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group id="email">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" ref={emailRef} required />
-                    </Form.Group>
-                    <Form.Group id="password">
-                        <Form.Label>Hasło</Form.Label>
-                        <Form.Control type="password" ref={passwordRef} required />
-                    </Form.Group>
-                    <Button type="submit" disabled={loading} className="w-100">Zaloguj się</Button>
-                </Form>
-            </Card>
+                    {error && <div className="login__alert">{error}</div>}
+                </div>
+                <form onSubmit={handleSubmit}>
+                    <div className="login__formGroup" id="email">
+                        <label>Email</label>
+                        <input className="login__inputText" type="email" ref={emailRef} required />
+                    </div>
+                    <div className="login__formGroup" id="password">
+                        <label>Hasło</label>
+                        <input className="login__inputText" type="password" ref={passwordRef} required />
+                    </div>
+                    <Button type="submit" disabled={loading} variant="contained" color="primary" className="w-100">Zaloguj się</Button>
+                </form>
+            </div>
             <div className="w-100 text-center mt-2">
                 Nie masz konta?<Link to='/signup'>Zarejestruj się</Link>
             </div>

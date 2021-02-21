@@ -7,7 +7,6 @@ import TextField from "@material-ui/core/TextField"
 import './Dashboard.css'
 import {useHistory} from 'react-router-dom'
 import { Image } from 'react-bootstrap'
-import { TollRounded } from '@material-ui/icons'
 export default function ImageUpload() {
 
     const [caption, setCaption] = useState("")

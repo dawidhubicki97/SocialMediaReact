@@ -74,6 +74,22 @@
     background-color: black;
     opacity: .5;
   }
+  @media (max-width:768px){
+    .profile__followers{
+      display: block;
+    }
+    .profile__followers,.profile__following{
+      padding-left: 30px;
+    }
+    .profile__bio{
+      padding-left: 30px;
+    }
+    .profile__headerUserName{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    }
+  }
   @media (max-width:480px){
     .profile__headerUserName{
       display:inline;

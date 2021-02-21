@@ -104,8 +104,8 @@
     
 }
 .postDetails__imageContent{
+    height: 65vh;
     width: 35%;
-    height:60vh;
     float: left;
     overflow-x: hidden;
     word-wrap: break-word;
