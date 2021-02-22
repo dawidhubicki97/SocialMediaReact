@@ -1,8 +1,7 @@
 import React, {useRef,useState} from 'react'
-import {Form,Button,Card,Alert} from 'react-bootstrap'
 import {useAuth} from '../contexts/AuthContext'
 import {Link,useHistory} from 'react-router-dom'
-
+import {Button} from '@material-ui/core'
 
 export default function SignUp() {
 
@@ -41,32 +40,32 @@ export default function SignUp() {
 
     return (
         <div>
-            <Card>
-                <Card.Body>
+            <div className="login__card">
+            <div className="login__cardBody">
      
                     <h2 className="text-center mb-4">Zarejestruj się</h2>
-                    {error && <Alert variant="danger">{error}</Alert>}
-                </Card.Body>
-                <Form onSubmit={handleSubmit}>
-                     <Form.Group id="username">
-                        <Form.Label>Nazwa użytkownika</Form.Label>
-                        <Form.Control type="username" ref={usernameRef} required />
-                    </Form.Group>
-                    <Form.Group id="email">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" ref={emailRef} required />
-                    </Form.Group>
-                    <Form.Group id="password">
-                        <Form.Label>Hasło</Form.Label>
-                        <Form.Control type="password" ref={passwordRef} required />
-                    </Form.Group>
-                    <Form.Group id="password-confirm">
-                        <Form.Label>Powtórz hasło</Form.Label>
-                        <Form.Control type="password" ref={passwordConfirmRef} required />
-                    </Form.Group>
-                    <Button type="submit" disabled={loading} className="w-100">Zarejestruj się</Button>
-                </Form>
-            </Card>
+                    {error && <div className="login__alert">{error}</div>}
+                </div>
+                <form onSubmit={handleSubmit}>
+                <div className="login__formGroup" id="username">
+                        <label>Nazwa użytkownika</label>
+                    <input className="login__inputText" type="username" ref={usernameRef} required />
+                    </div>
+                    <div className="login__formGroup" id="email">
+                        <label>Email</label>
+                        <input className="login__inputText" type="email" ref={emailRef} required />
+                    </div>
+                    <div className="login__formGroup" id="password">
+                        <label>Hasło</label>
+                        <input className="login__inputText" type="password" ref={passwordRef} required />
+                    </div>
+                    <div className="login__formGroup" id="password-confirm">
+                        <label>Powtórz hasło</label>
+                        <input className="login__inputText" type="password" ref={passwordConfirmRef} required />
+                    </div>
+                    <Button type="submit" variant="contained" color="primary" disabled={loading} className="w-100">Zarejestruj się</Button>
+                </form>
+            </div>
             <div className="w-100 text-center mt-2">
                 Masz już konto?<Link to='/login'>Zaloguj się</Link>
             </div>
