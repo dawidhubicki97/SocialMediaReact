@@ -18,12 +18,12 @@ function App() {
           <Route exact path="/" render={() => (<Redirect to="/home" />)} ></Route>   
             <PrivateRoute path="/home" component={withRouter(Dashboard)}></PrivateRoute>
             
-            <Container className='d-flex alig-items-center justify-content-center'>
-                <div className="w-100" style={{ maxWidth: '400px'}}>
+            <div >
+
                   <Route exact path="/signup" component={SignUp}></Route>
                  <Route exact path="/login" component={Login}></Route>
-                </div>
-            </Container>
+               
+            </div>
           </Switch>
         </AuthProvider>
        </Router>            

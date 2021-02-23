@@ -1,8 +1,8 @@
 import React, {useRef,useState} from 'react'
 import {useAuth} from '../contexts/AuthContext'
 import {Link,useHistory} from 'react-router-dom'
+import background from "../images/8741.jpg"
 import {Button} from '@material-ui/core'
-
 export default function SignUp() {
 
     const emailRef=useRef()
@@ -39,7 +39,7 @@ export default function SignUp() {
 
 
     return (
-        <div>
+        <div className="login">
             <div className="login__card">
             <div className="login__cardBody">
      
@@ -65,10 +65,15 @@ export default function SignUp() {
                     </div>
                     <Button type="submit" variant="contained" color="primary" disabled={loading} className="w-100">Zarejestruj się</Button>
                 </form>
+                <div className="login__textUnder">
+                Masz już konto?<br></br><Link to='/login'>Zaloguj się</Link>
+
             </div>
-            <div className="w-100 text-center mt-2">
-                Masz już konto?<Link to='/login'>Zaloguj się</Link>
             </div>
+            <div className="login__rightContainer">
+                <img src={background}></img>
+            </div>    
+           
         </div>
     )
 }

@@ -1,18 +1,8 @@
-.login__card{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-}
+
 .login__cardBody{
-    flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
+    white-space: nowrap;
 }
 .login__alert{
     color: #721c24;
@@ -27,7 +17,10 @@
 .login__formGroup{
     margin-bottom: 1rem;
 }
-
+.login__inputText:focus{
+    outline: none;
+  box-shadow: 0 0 0 2px orange;
+}
 .login__inputText{
     display: block;
     width: 100%;
@@ -37,14 +30,51 @@
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
-    background-color: #fff;
+    background-color:#f6eeee;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: .5rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     overflow: visible;
     margin: 0;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+}
+.login{
+    padding: 5% 10% 5% 10%;
+    width: 100%;
+    display: flex;
+
+}
+.login__rightContainer{
+    box-shadow: 0 8px 6px -6px black;
+    flex-grow: 1;
+    
+}
+.login__card{
+    color:#b34700;
+    box-shadow: 0 8px 6px -6px black;
+    padding:20px;
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+   
+    background-color: #ffccb3;
+    border-right: solid 1px lightgray;
+    background-clip: border-box;
+    border-radius: .25rem;
+}
+.login__formGroup>label{
+    font-weight: lighter;
+    color:black;
+}
+.login__rightContainer>img{
+    height:100%;
+    width:100%;
+}
+.login__textUnder{
+    text-align: center;
+    font-weight: lighter;
 }
