@@ -46,14 +46,11 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
   });
   function handleSubmit(e) {
     e.preventDefault();
-    db.collection("allposts")
-      .doc(postKey)
-      .collection("comments")
-      .add({
-        commentText: commentRef.current.value,
-        commentUsername: currentUser.displayName,
-        commentUserUid: currentUser.uid,
-      });
+    db.collection("allposts").doc(postKey).collection("comments").add({
+      commentText: commentRef.current.value,
+      commentUsername: currentUser.displayName,
+      commentUserUid: currentUser.uid,
+    });
     commentRef.current.value = "";
   }
 
@@ -169,6 +166,9 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
                           onClick={(e) =>
                             clickHandler(e)(comment.commentUserUid)
                           }
+                          style={{
+                            cursor: "pointer",
+                          }}
                         >
                           {comment.commentUsername}:{" "}
                         </b>

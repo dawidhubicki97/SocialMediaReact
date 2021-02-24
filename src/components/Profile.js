@@ -65,7 +65,7 @@ export default function Profile() {
       {profile && (
         <div className="profile__container">
           <div className="profile__header">
-            <div className="imageContainer">
+            <div className="profile__imageContainer">
               <label htmlFor="actual-btn">
                 {profile.avatarUrl ? (
                   <Avatar

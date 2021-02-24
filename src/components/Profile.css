@@ -1,7 +1,5 @@
 .profile__image {
   object-fit: contain;
-  max-width: 20vw;
-  max-height: 20vh;
   transition: opacity 0.5s;
   opacity: 1;
   float: left;
@@ -50,7 +48,7 @@
   max-width: 1240px;
 }
 
-.imageContainer {
+.profile__imageContainer {
   border-radius: 50%;
   display: inline-block;
   float: left;
@@ -59,13 +57,13 @@
   margin-left: 10px;
 }
 
-.imageContainer div {
+.profile__imageContainer div {
   height: 160px;
   width: 160px;
   max-width: 100%;
   vertical-align: top;
 }
-.imageContainer img:hover {
+.profile__imageContainer img:hover {
   border-radius: 50%;
   max-width: 100%;
   background-color: black;
@@ -100,8 +98,8 @@
     display: flex;
   }
   .profile__image {
-    max-width: 16vw;
-    max-height: 18vh;
+    max-width: 100px;
+    max-height: 100px;
   }
   .profile__bio {
     margin-top: 50px;

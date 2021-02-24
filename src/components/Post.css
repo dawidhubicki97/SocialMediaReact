@@ -175,9 +175,12 @@
     padding-top: 10px !important;
   }
   .postDetails__img {
+    margin: 0 auto;
+    display: block;
+    float: none;
     padding-right: 0px;
     max-width: none;
-    width: 100%;
+    width: 320px;
     height: 50vh;
   }
   .postDetails__commentForm {
