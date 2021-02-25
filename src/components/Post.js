@@ -13,6 +13,7 @@ export default function Post({
   profilePic,
   comments,
   timestamp,
+  likesNumber,
 }) {
   const [profilePicUrl, setprofilePicUrl] = useState("");
   const history = useHistory();
@@ -34,6 +35,7 @@ export default function Post({
   }, [showModal]);
 
   useEffect(() => {
+    console.log(likesNumber);
     storage
       .ref(profilePic)
       .getDownloadURL()
@@ -48,6 +50,7 @@ export default function Post({
           imageUrl: imageUrl,
           comments: comments,
           timestamp: timestamp,
+          likesNumber: likesNumber,
         });
       });
   }, []);

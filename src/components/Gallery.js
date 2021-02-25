@@ -116,6 +116,7 @@ export default function Gallery({ uid }) {
             caption={post.caption}
             imageUrl={post.imageUrl}
             comments={post.comments}
+            likesNumber={post.likesNumber}
           ></Post>
         ))}
       <div className="dashboard__loadButton">

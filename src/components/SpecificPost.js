@@ -6,6 +6,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import { useSpring } from "react-spring";
 import Avatar from "@material-ui/core/Avatar";
+import firebase from "firebase/app";
 import { db } from "../firebase";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import { Button } from "@material-ui/core";
@@ -79,18 +80,23 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
   };
 
   function likeButtonHandler(e) {
-    if (isLiked)
+    if (isLiked) {
+      const decrement = firebase.firestore.FieldValue.increment(-1);
       db.collection("allposts")
         .doc(postKey)
         .collection("likes")
         .doc(currentUser.uid)
         .delete();
-    else
+      db.collection("allposts").doc(postKey).update({ likesNumber: decrement });
+    } else {
+      const increment = firebase.firestore.FieldValue.increment(1);
       db.collection("allposts")
         .doc(postKey)
         .collection("likes")
         .doc(currentUser.uid)
         .set({ uid: currentUser.uid });
+      db.collection("allposts").doc(postKey).update({ likesNumber: increment });
+    }
   }
 
   if (!showModal) return null;
@@ -141,6 +147,9 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
                         <ThumbUpIcon></ThumbUpIcon>Lubię to
                       </Button>
                     )}
+                  </div>
+                  <div className="postDetails__likesNumber">
+                    Polubień:{post.likesNumber}
                   </div>
                   <div className="postDetails__caption">{post.caption}</div>
 
