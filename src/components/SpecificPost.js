@@ -147,10 +147,12 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
                         <ThumbUpIcon></ThumbUpIcon>Lubię to
                       </Button>
                     )}
+                    <div className="postDetails__likeCounter">
+                      <ThumbUpIcon fontSize="small"></ThumbUpIcon>
+                      {post.likesNumber}
+                    </div>
                   </div>
-                  <div className="postDetails__likesNumber">
-                    Polubień:{post.likesNumber}
-                  </div>
+
                   <div className="postDetails__caption">{post.caption}</div>
 
                   <div className="postDetails__commentForm">

@@ -26,7 +26,6 @@
 .post {
   margin: 10px;
   width: 350px;
-  height: 400px;
 }
 .postDetails__avatar {
   margin-right: 10px;
@@ -122,6 +121,9 @@
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+.postDetails__likeCounter {
+  font-weight: lighter;
+}
 .postDetails__closeButton {
   cursor: pointer;
 }
@@ -133,6 +135,7 @@
   font-weight: lighter;
 }
 .post__card {
+  height: 410px;
   position: relative;
   display: flex;
   flex-direction: column;
