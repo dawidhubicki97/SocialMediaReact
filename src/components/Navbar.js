@@ -51,7 +51,10 @@ export default function Navbar({ isOpen }) {
         TransitionComponent={Transition}
         keepMounted
       >
-        <div className="dashboard__headerLogo">
+        <div
+          className="dashboard__headerLogo"
+          style={{ borderBottom: "solid 1px lightgray" }}
+        >
           <img className="dashboard__headerImage" src={logo} />
         </div>
         <div className="dashboard__menuSlideItem">
