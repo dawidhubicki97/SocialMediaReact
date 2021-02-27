@@ -99,7 +99,7 @@ export default function Profile() {
             <div className="profile__bio">{profile.bio}</div>
           </div>
           <div className="profile__posts">
-            <Gallery uid={currentUser.uid}></Gallery>
+            <Gallery uid={currentUser.uid} owner={true}></Gallery>
           </div>
         </div>
       )}

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Post.css";
-import { storage } from "../firebase";
+import { storage, db } from "../firebase";
 import Avatar from "@material-ui/core/Avatar";
 import SpecificPost from "./SpecificPost";
+import DeleteIcon from "@material-ui/icons/Delete";
 export default function Post({
   postKey,
   ownerUid,
@@ -13,6 +14,7 @@ export default function Post({
   comments,
   timestamp,
   likesNumber,
+  owner,
 }) {
   const [profilePicUrl, setprofilePicUrl] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -56,10 +58,18 @@ export default function Post({
   const handleProfileClick = (e) => {
     console.log(ownerUid);
   };
+  const handleDeleteClick = (e) => {
+    db.collection("allposts").doc(postKey).delete();
+  };
 
   return (
     <div className="post">
       <div className="post__card">
+        {owner && (
+          <div className="post__deleteButton" onClick={handleDeleteClick}>
+            <DeleteIcon></DeleteIcon>
+          </div>
+        )}
         <div className="post__cardBody">
           <img className="post__img" src={imageUrl} onClick={openModal}></img>
           <SpecificPost

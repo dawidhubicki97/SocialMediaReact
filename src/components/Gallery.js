@@ -4,7 +4,7 @@ import "./Post.css";
 import { Button } from "@material-ui/core";
 import { db } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
-export default function Gallery({ uid }) {
+export default function Gallery({ uid, owner }) {
   const [posts, setPosts] = useState([]);
   const { currentUser } = useAuth();
   const [followedUsers, setFollowedUsers] = useState([]);
@@ -142,6 +142,7 @@ export default function Gallery({ uid }) {
             imageUrl={post.imageUrl}
             comments={post.comments}
             likesNumber={post.likesNumber}
+            owner={owner}
           ></Post>
         ))}
       <div className="dashboard__loadButton">
