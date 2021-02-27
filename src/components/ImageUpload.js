@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, withWidth } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { storage, db } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 import firebase from "firebase";
@@ -11,7 +11,6 @@ export default function ImageUpload() {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
-  const [url, setUrl] = useState("");
   const { currentUser } = useAuth();
   const history = useHistory();
   const handleChange = (e) => {

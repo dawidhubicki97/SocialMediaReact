@@ -10,7 +10,7 @@ import Gallery from "./Gallery";
 export default function BrowseProfile() {
   const [profile, setProfile] = useState(null);
   const [isFollowed, setIsFollowed] = useState(false);
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
   const { uid } = useParams();
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export default function BrowseProfile() {
       {profile && (
         <div className="profile__container">
           <div className="profile__header">
-            <div className="imageContainer">
+            <div className="profile__imageContainer">
               <label>
                 {profile.avatarUrl ? (
                   <Avatar src={profile.avatarUrl} className="profile__image" />

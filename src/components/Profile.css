@@ -5,7 +5,9 @@
   float: left;
   margin-top: 20px;
 }
-
+.profile {
+  min-height: 90vh;
+}
 .profile__headerUserName {
   display: inline;
   font-size: x-large;

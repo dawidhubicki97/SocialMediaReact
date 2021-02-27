@@ -8,6 +8,7 @@
   margin-top: 10px;
 }
 .dashboard {
+  min-height: 90vh;
   height: 100% !important;
 }
 .dashboard__header {

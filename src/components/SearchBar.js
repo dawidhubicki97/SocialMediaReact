@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
-import classNames from "classnames";
 import "./Dashboard.css";
 import SearchHints from "./SearchHints";
-import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
@@ -15,13 +13,17 @@ export default function SearchBar({ isOpen }) {
   useEffect(() => {
     db.collection("users")
       .get()
-      .then((snapshot) =>
-        setUsers(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            user: doc.data(),
-          }))
-        )
+      .then(
+        (snapshot) =>
+          setUsers(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              user: doc.data(),
+            }))
+          ),
+        (error) => {
+          console.log(error);
+        }
       );
   }, []);
 

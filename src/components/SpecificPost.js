@@ -4,7 +4,6 @@ import "./Post.css";
 import { useHistory } from "react-router-dom";
 import CloseIcon from "@material-ui/icons/Close";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import { useSpring } from "react-spring";
 import Avatar from "@material-ui/core/Avatar";
 import firebase from "firebase/app";
 import { db } from "../firebase";
@@ -17,17 +16,7 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
   const commentRef = useRef();
   const history = useHistory();
   const [isLiked, setIsLiked] = useState(false);
-  const { currentUser, logout } = useAuth();
-  const MODAL_STYLES = {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    maxHeight: "700px",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "#FFF",
-    padding: "20px",
-    zIndex: 1000,
-  };
+  const { currentUser } = useAuth();
 
   const OVERLAY_STYLES = {
     position: "fixed",
@@ -38,13 +27,6 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
     backgroundColor: "rgba(0, 0, 0, .7)",
     zIndex: 1000,
   };
-  const animation = useSpring({
-    config: {
-      duration: 250,
-    },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(0%)` : `translateY(-100%)`,
-  });
   function handleSubmit(e) {
     e.preventDefault();
     db.collection("allposts").doc(postKey).collection("comments").add({

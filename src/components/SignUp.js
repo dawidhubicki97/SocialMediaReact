@@ -96,7 +96,7 @@ export default function SignUp() {
         </div>
       </div>
       <div className="login__rightContainer">
-        <img src={background}></img>
+        <img alt="" src={background}></img>
       </div>
     </div>
   );

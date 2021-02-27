@@ -6,7 +6,7 @@ import { db } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 export default function Gallery({ uid }) {
   const [posts, setPosts] = useState([]);
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
   const [followedUsers, setFollowedUsers] = useState([]);
   const [lastVisible, setLastVisible] = useState(null);
   useEffect(() => {
@@ -16,15 +16,20 @@ export default function Gallery({ uid }) {
         .orderBy("timestamp")
         .limit(6)
         .get()
-        .then((snapshot) => {
-          setPosts(
-            snapshot.docs.map((doc) => ({
-              id: doc.id,
-              post: doc.data(),
-            }))
-          );
-          setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
-        });
+        .then(
+          (snapshot) => {
+            setPosts(
+              snapshot.docs.map((doc) => ({
+                id: doc.id,
+                post: doc.data(),
+              }))
+            );
+            setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     }
   }, [followedUsers]);
 
@@ -37,17 +42,22 @@ export default function Gallery({ uid }) {
           .startAfter(lastVisible)
           .limit(6)
           .get()
-          .then((snapshot) => {
-            setPosts(
-              posts.concat(
-                snapshot.docs.map((doc) => ({
-                  id: doc.id,
-                  post: doc.data(),
-                }))
-              )
-            );
-            setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
-          });
+          .then(
+            (snapshot) => {
+              setPosts(
+                posts.concat(
+                  snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    post: doc.data(),
+                  }))
+                )
+              );
+              setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
       } else {
         console.log("niemanic");
       }
@@ -59,17 +69,22 @@ export default function Gallery({ uid }) {
           .startAfter(lastVisible)
           .limit(6)
           .get()
-          .then((snapshot) => {
-            setPosts(
-              posts.concat(
-                snapshot.docs.map((doc) => ({
-                  id: doc.id,
-                  post: doc.data(),
-                }))
-              )
-            );
-            setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
-          });
+          .then(
+            (snapshot) => {
+              setPosts(
+                posts.concat(
+                  snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    post: doc.data(),
+                  }))
+                )
+              );
+              setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
       } else {
         console.log("niemanic");
       }
@@ -81,24 +96,34 @@ export default function Gallery({ uid }) {
       db.collection("following")
         .doc(currentUser.uid)
         .collection("userFollowing")
-        .onSnapshot((snapshot) => {
-          setFollowedUsers(snapshot.docs.map((doc) => doc.id));
-        });
+        .onSnapshot(
+          (snapshot) => {
+            setFollowedUsers(snapshot.docs.map((doc) => doc.id));
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     } else {
       db.collection("allposts")
         .where("ownerUid", "==", uid)
         .orderBy("timestamp")
         .limit(6)
         .get()
-        .then((snapshot) => {
-          setPosts(
-            snapshot.docs.map((doc) => ({
-              id: doc.id,
-              post: doc.data(),
-            }))
-          );
-          setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
-        });
+        .then(
+          (snapshot) => {
+            setPosts(
+              snapshot.docs.map((doc) => ({
+                id: doc.id,
+                post: doc.data(),
+              }))
+            );
+            setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     }
   }, []);
 

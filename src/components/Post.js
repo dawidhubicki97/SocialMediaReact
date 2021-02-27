@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import "./Post.css";
 import { storage } from "../firebase";
 import Avatar from "@material-ui/core/Avatar";
@@ -16,7 +15,6 @@ export default function Post({
   likesNumber,
 }) {
   const [profilePicUrl, setprofilePicUrl] = useState("");
-  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [post, setPost] = useState(null);
 
