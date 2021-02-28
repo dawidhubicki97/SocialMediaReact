@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import Post from "./Post";
 import "./Post.css";
 import { Button } from "@material-ui/core";
 import { db } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 export default function Gallery({ uid, owner }) {
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   const [posts, setPosts] = useState([]);
   const { currentUser } = useAuth();
   const [followedUsers, setFollowedUsers] = useState([]);
@@ -32,6 +33,10 @@ export default function Gallery({ uid, owner }) {
         );
     }
   }, [followedUsers]);
+
+  function rerenderParentCallback() {
+    forceUpdate();
+  }
 
   function addPostsScroll(e) {
     if (uid == null) {
@@ -125,7 +130,7 @@ export default function Gallery({ uid, owner }) {
           }
         );
     }
-  }, []);
+  }, [ignored]);
 
   return (
     <div className="dashboard__postsContainer">
@@ -143,6 +148,7 @@ export default function Gallery({ uid, owner }) {
             comments={post.comments}
             likesNumber={post.likesNumber}
             owner={owner}
+            rerenderParentCallback={rerenderParentCallback}
           ></Post>
         ))}
       <div className="dashboard__loadButton">

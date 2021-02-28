@@ -23,6 +23,7 @@ export default function Post({
   timestamp,
   likesNumber,
   owner,
+  rerenderParentCallback,
 }) {
   const [profilePicUrl, setprofilePicUrl] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -76,7 +77,10 @@ export default function Post({
     console.log(ownerUid);
   };
   const handleDeleteClick = (e) => {
-    db.collection("allposts").doc(postKey).delete();
+    db.collection("allposts")
+      .doc(postKey)
+      .delete()
+      .then(rerenderParentCallback());
     setDeleteConfirmOpen(false);
   };
 
