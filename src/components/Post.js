@@ -3,6 +3,14 @@ import "./Post.css";
 import { storage, db } from "../firebase";
 import Avatar from "@material-ui/core/Avatar";
 import SpecificPost from "./SpecificPost";
+import {
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Button,
+} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 export default function Post({
   postKey,
@@ -19,6 +27,15 @@ export default function Post({
   const [profilePicUrl, setprofilePicUrl] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [post, setPost] = useState(null);
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+
+  const handleDeleteClickOpen = () => {
+    setDeleteConfirmOpen(true);
+  };
+
+  const handleDeleteClose = () => {
+    setDeleteConfirmOpen(false);
+  };
 
   const openModal = () => {
     setShowModal(!showModal);
@@ -60,14 +77,38 @@ export default function Post({
   };
   const handleDeleteClick = (e) => {
     db.collection("allposts").doc(postKey).delete();
+    setDeleteConfirmOpen(false);
   };
 
   return (
     <div className="post">
+      <Dialog
+        open={deleteConfirmOpen}
+        onClose={handleDeleteClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Czy chcesz usunąć ten post?
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Post zostanie usunięty i nie bedzie możliwości przywrócenia go
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDeleteClose} color="primary">
+            Nie
+          </Button>
+          <Button onClick={handleDeleteClick} color="primary" autoFocus>
+            Tak
+          </Button>
+        </DialogActions>
+      </Dialog>
       <div className="post__card">
         {owner && (
-          <div className="post__deleteButton" onClick={handleDeleteClick}>
-            <DeleteIcon></DeleteIcon>
+          <div className="post__deleteButton" onClick={handleDeleteClickOpen}>
+            <DeleteIcon className="post__deleteIcon"></DeleteIcon>
           </div>
         )}
         <div className="post__cardBody">
