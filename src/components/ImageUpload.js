@@ -96,13 +96,12 @@ export default function ImageUpload() {
       ></input>
       <div className="imageUpload__textField">
         <TextField
+          className="imageUpload__textFieldInput"
           type="text"
-          size="medium"
           placeholder="dodaj podpis"
           InputProps={{
             style: {
               backgroundColor: "white",
-              width: 400,
             },
           }}
           multiline={true}

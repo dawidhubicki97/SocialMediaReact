@@ -8,7 +8,7 @@
   margin-top: 10px;
 }
 .dashboard {
-  min-height: 90vh;
+  min-height: 100vh;
   height: 100% !important;
 }
 .dashboard__header {
@@ -104,14 +104,18 @@
   max-width: 420px;
   padding: 10px;
 }
-
+.imageUpload__textFieldInput {
+  width: 100%;
+  min-width: 200px;
+  max-width: 400px;
+}
 .imageUpload__temporaryImage:hover {
   background-color: grey;
   opacity: 0.5;
 }
 .imageUpload__uploadButton {
   padding-top: 10px;
-  padding-left: 100px;
+  padding-left: 10%;
 }
 .imageUpload__uploadButton > progress {
   margin-left: 10px;

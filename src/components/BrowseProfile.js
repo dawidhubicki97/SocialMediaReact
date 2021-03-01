@@ -79,12 +79,6 @@ export default function BrowseProfile() {
             </div>
             <div className="profile__userInfo">
               <div className="profile__headerUserName">{profile.username}</div>
-              <div className="profile__followers">
-                Obserwuje: <b>{profile.followed}</b>
-              </div>
-              <div className="profile__following">
-                Obserwowani: <b>{profile.following}</b>
-              </div>
               {isFollowed ? (
                 <Button
                   type="submit"
@@ -104,6 +98,12 @@ export default function BrowseProfile() {
                   Obserwuj
                 </Button>
               )}
+              <div className="profile__followers">
+                Obserwuje: <b>{profile.followed}</b>
+              </div>
+              <div className="profile__following">
+                Obserwowani: <b>{profile.following}</b>
+              </div>
             </div>
             <div className="profile__bio">{profile.bio}</div>
           </div>

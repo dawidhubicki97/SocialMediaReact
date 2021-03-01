@@ -17,6 +17,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .profile__header {
   border-bottom: 1px solid lightgray;
   display: inline-block;
@@ -56,7 +57,7 @@
   float: left;
 }
 .profile__followButton {
-  margin-left: 10px;
+  margin-left: 10px !important;
 }
 
 .profile__imageContainer div {
