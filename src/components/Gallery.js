@@ -64,7 +64,6 @@ export default function Gallery({ uid, owner }) {
             }
           );
       } else {
-        console.log("niemanic");
       }
     } else {
       if (lastVisible) {
@@ -91,7 +90,6 @@ export default function Gallery({ uid, owner }) {
             }
           );
       } else {
-        console.log("niemanic");
       }
     }
   }

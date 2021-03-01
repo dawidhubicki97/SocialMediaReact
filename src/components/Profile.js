@@ -12,11 +12,8 @@ export default function Profile() {
   const [image, setImage] = useState(null);
   const passFromPicToUpload = (e) => {
     hiddenFileInput.current.click();
-    console.log("one");
   };
   const handleProfilePicUpload = (e) => {
-    console.log("two");
-
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }

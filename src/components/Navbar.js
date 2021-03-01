@@ -38,6 +38,15 @@ export default function Navbar({ isOpen }) {
     </a>
   ));
 
+  function handleProfileClick(e) {
+    history.replace("/home/profile");
+  }
+  function handleAddPhotoClick(e) {
+    history.replace("/home/addpost");
+  }
+  function handleLogoClick(e) {
+    history.replace("/home");
+  }
   function Transition(props) {
     return <Slide direction="left" {...props} />;
   }
@@ -46,27 +55,31 @@ export default function Navbar({ isOpen }) {
   let menuMask;
   if (showMenu) {
     menu = (
-      <div
-        className="dashboard__menuSlide"
-        TransitionComponent={Transition}
-        keepMounted
-      >
-        <div
-          className="dashboard__headerLogo"
-          style={{ borderBottom: "solid 1px lightgray" }}
-        >
-          <img className="dashboard__headerImage" src={logo} />
+      <Slide direction="right" in={showMenu} mountOnEnter unmountOnExit>
+        <div className="dashboard__menuSlide">
+          <div
+            className="dashboard__headerLogo"
+            style={{ borderBottom: "solid 1px lightgray" }}
+          >
+            <img className="dashboard__headerImage" src={logo} />
+          </div>
+          <div
+            className="dashboard__menuSlideItem"
+            onClick={handleProfileClick}
+          >
+            <PersonIcon></PersonIcon>Profil
+          </div>
+          <div
+            className="dashboard__menuSlideItem"
+            onClick={handleAddPhotoClick}
+          >
+            <AddCircleIcon></AddCircleIcon>Dodaj zdjęcie
+          </div>
+          <div className="dashboard__menuSlideItem" onClick={handleLogout}>
+            <ExitToAppIcon></ExitToAppIcon>Wyloguj
+          </div>
         </div>
-        <div className="dashboard__menuSlideItem">
-          <PersonIcon></PersonIcon>Profil
-        </div>
-        <div className="dashboard__menuSlideItem">
-          <AddCircleIcon></AddCircleIcon>Dodaj zdjęcie
-        </div>
-        <div className="dashboard__menuSlideItem">
-          <ExitToAppIcon></ExitToAppIcon>Wyloguj
-        </div>
-      </div>
+      </Slide>
     );
 
     menuMask = (
@@ -81,7 +94,11 @@ export default function Navbar({ isOpen }) {
     <nav className="dashboard__header">
       <div className="dashboard__row">
         <div className="dashboard__headerLogo">
-          <img className="dashboard__headerImage" src={logo} />
+          <img
+            onClick={handleLogoClick}
+            className="dashboard__headerImage"
+            src={logo}
+          />
         </div>
         <div className="dashboard__searchbar">
           <SearchBar isOpen={isOpen}></SearchBar>
