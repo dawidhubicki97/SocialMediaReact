@@ -55,7 +55,21 @@
   margin-right: 10px;
   float: left;
 }
+.postDetails__likesCounter {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: white;
+  border: solid 2px #3f51b5;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  overflow: hidden;
+  vertical-align: middle;
+  font-weight: lighter;
+  margin-left: 5px;
+}
 .postDetails__container {
+  border-radius: 3%;
   min-width: 750px;
   position: fixed;
   width: 50%;

@@ -113,26 +113,32 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
                   </div>
                   <div className="postDetails__thumbUp">
                     {isLiked ? (
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={likeButtonHandler}
-                      >
-                        <ThumbUpIcon></ThumbUpIcon>Lubię to
-                      </Button>
+                      <div>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={likeButtonHandler}
+                        >
+                          <ThumbUpIcon></ThumbUpIcon>Lubię to
+                        </Button>
+                        <div className="postDetails__likesCounter">
+                          {post.likesNumber}
+                        </div>
+                      </div>
                     ) : (
-                      <Button
-                        variant="outlined"
-                        color="primary"
-                        onClick={likeButtonHandler}
-                      >
-                        <ThumbUpIcon></ThumbUpIcon>Lubię to
-                      </Button>
+                      <div>
+                        <Button
+                          variant="outlined"
+                          color="primary"
+                          onClick={likeButtonHandler}
+                        >
+                          <ThumbUpIcon></ThumbUpIcon>Lubię to
+                        </Button>
+                        <div className="postDetails__likesCounter">
+                          {post.likesNumber}
+                        </div>
+                      </div>
                     )}
-                    <div className="postDetails__likeCounter">
-                      <ThumbUpIcon fontSize="small"></ThumbUpIcon>
-                      {post.likesNumber}
-                    </div>
                   </div>
 
                   <div className="postDetails__caption">{post.caption}</div>
