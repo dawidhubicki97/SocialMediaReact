@@ -8,6 +8,7 @@
   height: 300px;
   width: 300px;
   object-fit: fill;
+  cursor: pointer;
 }
 .post__header {
   display: flex;

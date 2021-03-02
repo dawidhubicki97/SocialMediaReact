@@ -2,7 +2,7 @@
   object-fit: contain;
   width: 85px;
   height: 85px;
-
+  cursor: pointer;
   display: inline-block;
   margin-left: 10px;
   margin-top: 10px;
