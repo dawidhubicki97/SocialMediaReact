@@ -7,7 +7,6 @@ import Gallery from "./Gallery";
 export default function Profile() {
   const { currentUser, logout } = useAuth();
   const hiddenFileInput = React.useRef(null);
-  const [progress, setProgress] = useState(0);
   const [profile, setProfile] = useState(null);
   const [image, setImage] = useState(null);
   const passFromPicToUpload = (e) => {

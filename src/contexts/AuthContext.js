@@ -21,7 +21,10 @@ export function AuthProvider({ children }) {
         following: 0,
         followed: 0,
       });
-      cred.user.displayName = username;
+
+      cred.user.updateProfile({
+        displayName: username,
+      });
     });
   }
 

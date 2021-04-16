@@ -30,7 +30,8 @@ export default function SignUp() {
         usernameRef.current.value
       );
       history.push("/");
-    } catch {
+    } catch (error) {
+      console.log(error);
       setError("Nie udało się stworzyć konta");
     }
     setLoading(false);
@@ -96,7 +97,11 @@ export default function SignUp() {
         </div>
       </div>
       <div className="login__rightContainer">
-        <img alt="" src={background}></img>
+        {background ? (
+          <img src={background}></img>
+        ) : (
+          <div style={{ width: "100%", height: "100%" }}></div>
+        )}
       </div>
     </div>
   );
