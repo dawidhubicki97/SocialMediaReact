@@ -62,6 +62,7 @@ export default function ImageUpload() {
                     displayName: currentUser.displayName,
                     userAvatarUrl: `users/${currentUser.uid}/avatar/active`,
                     userUrl: db.collection("users").doc(currentUser.uid),
+                    likesNumber: 0,
                   })
                   .then(history.push("/home/profile"))
               );

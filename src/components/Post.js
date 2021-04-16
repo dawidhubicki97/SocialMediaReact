@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Post.css";
+import defaulAvatar from "../images/defaultuser.png";
 import { storage, db } from "../firebase";
 import Avatar from "@material-ui/core/Avatar";
 import SpecificPost from "./SpecificPost";
@@ -53,7 +54,6 @@ export default function Post({
   }, [showModal]);
 
   useEffect(() => {
-    console.log(likesNumber);
     storage
       .ref(profilePic)
       .getDownloadURL()
@@ -64,6 +64,20 @@ export default function Post({
           ownerUid: ownerUid,
           caption: caption,
           profilePic: url,
+          username: username,
+          imageUrl: imageUrl,
+          comments: comments,
+          timestamp: timestamp,
+          likesNumber: likesNumber,
+        });
+      })
+      .catch((error) => {
+        setprofilePicUrl(defaulAvatar);
+        setPost({
+          postKey: postKey,
+          ownerUid: ownerUid,
+          caption: caption,
+          profilePic: defaulAvatar,
           username: username,
           imageUrl: imageUrl,
           comments: comments,

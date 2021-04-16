@@ -7,6 +7,7 @@ import Gallery from "./Gallery";
 export default function Profile() {
   const { currentUser, logout } = useAuth();
   const hiddenFileInput = React.useRef(null);
+  const [progress, setProgress] = useState(0);
   const [profile, setProfile] = useState(null);
   const [image, setImage] = useState(null);
   const passFromPicToUpload = (e) => {
@@ -41,7 +42,8 @@ export default function Profile() {
             .then((url) => {
               db.collection("users")
                 .doc(currentUser.uid)
-                .update({ avatarUrl: url });
+                .update({ avatarUrl: url })
+                .then(setProfile(null));
             });
         }
       );
@@ -53,7 +55,7 @@ export default function Profile() {
       .doc(currentUser.uid)
       .get()
       .then((snapshot) => setProfile(snapshot.data()));
-  }, []);
+  }, [profile]);
 
   return (
     <div className="profile">
