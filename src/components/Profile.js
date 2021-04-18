@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Profile.css";
 import { useAuth } from "../contexts/AuthContext";
 import Avatar from "@material-ui/core/Avatar";
 import { storage, db } from "../firebase";
 import Gallery from "./Gallery";
+import { TextareaAutosize } from "@material-ui/core";
 export default function Profile() {
   const { currentUser, logout } = useAuth();
   const hiddenFileInput = React.useRef(null);
   const [progress, setProgress] = useState(0);
   const [profile, setProfile] = useState(null);
   const [image, setImage] = useState(null);
+  const [bioClicked, setBioClicked] = useState(false);
+  const bioRef = useRef(null);
+
   const passFromPicToUpload = (e) => {
     hiddenFileInput.current.click();
   };
@@ -18,7 +22,16 @@ export default function Profile() {
       setImage(e.target.files[0]);
     }
   };
-
+  useEffect(() => {
+    document.addEventListener("click", (event) => {
+      if (bioRef.current && !bioRef.current.contains(event.target)) {
+        console.log("profil");
+      }
+    });
+  }, []);
+  const clickBio = (e) => {
+    setBioClicked(!bioClicked);
+  };
   useEffect(() => {
     if (image) {
       const uploadTask = storage
@@ -93,7 +106,15 @@ export default function Profile() {
                 Obserwowani: <b>{profile.following}</b>
               </div>
             </div>
-            <div className="profile__bio">{profile.bio}</div>
+            {bioClicked ? (
+              <div className="profile__bio">
+                <textarea ref={bioRef}> </textarea>
+              </div>
+            ) : (
+              <div className="profile__bio editable" onClick={clickBio}>
+                {profile.bio}
+              </div>
+            )}
           </div>
           <div className="profile__posts">
             <Gallery uid={currentUser.uid} owner={true}></Gallery>

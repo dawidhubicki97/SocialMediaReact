@@ -1,6 +1,7 @@
 .app__container {
   background-color: #fafafa;
   box-sizing: content-box;
+  height: 100%;
 }
 .App-link {
   color: #61dafb;

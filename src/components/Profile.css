@@ -7,26 +7,44 @@
 }
 .profile {
   min-height: 90vh;
+  height: 100%;
 }
 .profile__headerUserName {
-  display: inline;
+  display: inline-block;
   font-size: x-large;
   font-weight: bold;
   padding-left: 30px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 30%;
 }
 
 .profile__header {
   border-bottom: 1px solid lightgray;
   display: inline-block;
   width: 100%;
+  height: 30%;
+}
+.editable {
+}
+.profile__bio > textarea {
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.editable:hover {
+  background-color: grey;
 }
 .profile__bio {
+  display: inline-block;
   font-size: large;
   padding-left: 30px;
   float: left;
+  height: 20vh;
+  width: 80%;
 }
 .profile__following {
   font-size: large;
@@ -34,8 +52,8 @@
   display: inline;
 }
 .profile__followers {
+  padding-left: 15px;
   font-size: large;
-  padding-left: 20%;
   display: inline;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -43,6 +61,7 @@
 }
 
 .profile__container {
+  height: 100%;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
