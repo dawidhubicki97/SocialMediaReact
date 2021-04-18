@@ -64,8 +64,7 @@
   border-radius: 0.25rem;
 }
 .login__formGroup > label {
-  font-weight: lighter;
-  color: black;
+  color: #b34700;
 }
 .login__rightContainer > img {
   height: 100%;
@@ -74,4 +73,12 @@
 .login__textUnder {
   text-align: center;
   font-weight: lighter;
+}
+@media (max-width: 900px) {
+  .login__rightContainer {
+    display: none;
+  }
+  .login__card {
+    height: 80%;
+  }
 }
