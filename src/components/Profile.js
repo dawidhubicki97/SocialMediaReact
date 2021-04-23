@@ -22,12 +22,20 @@ export default function Profile() {
       setImage(e.target.files[0]);
     }
   };
+
   useEffect(() => {
-    document.addEventListener("click", (event) => {
-      if (bioRef.current && !bioRef.current.contains(event.target)) {
+    document.addEventListener("mousedown", (event) => {
+      if (!bioRef.current.contains(event.target)) {
+        setBioClicked(false);
       }
     });
   }, []);
+
+  const handleClickOutside = (event) => {
+    if (bioRef.current && !bioRef.current.contains(event.target)) {
+      setBioClicked(!bioClicked);
+    }
+  };
   const clickBio = (e) => {
     setBioClicked(!bioClicked);
   };
@@ -57,6 +65,7 @@ export default function Profile() {
                 .doc(currentUser.uid)
                 .update({ avatarUrl: url })
                 .then(setProfile(null));
+              loadProfile();
             });
         }
       );
@@ -64,6 +73,10 @@ export default function Profile() {
   }, [image, currentUser]);
 
   useEffect(() => {
+    loadProfile();
+  }, []);
+
+  const loadProfile = () => {
     db.collection("users")
       .doc(currentUser.uid)
       .get()
@@ -71,7 +84,7 @@ export default function Profile() {
         setProfile(snapshot.data());
         console.log("profile dwa");
       });
-  }, []);
+  };
 
   return (
     <div className="profile">
@@ -111,10 +124,14 @@ export default function Profile() {
             </div>
             {bioClicked ? (
               <div className="profile__bio">
-                <textarea ref={bioRef}> </textarea>
+                <textarea ref={bioRef} defaultValue={profile.bio}></textarea>
               </div>
             ) : (
-              <div className="profile__bio editable" onClick={clickBio}>
+              <div
+                className="profile__bio editable"
+                ref={bioRef}
+                onClick={clickBio}
+              >
                 {profile.bio}
               </div>
             )}
