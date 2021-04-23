@@ -11,6 +11,7 @@ export default function Profile() {
   const [progress, setProgress] = useState(0);
   const [profile, setProfile] = useState(null);
   const [image, setImage] = useState(null);
+  const [inputValue, setInputValue] = useState("");
   const [bioClicked, setBioClicked] = useState(false);
   const bioRef = useRef(null);
 
@@ -39,6 +40,11 @@ export default function Profile() {
   const clickBio = (e) => {
     setBioClicked(!bioClicked);
   };
+
+  const onChangeHandler = (event) => {
+    setInputValue(event.target.value);
+  };
+
   useEffect(() => {
     if (image) {
       const uploadTask = storage
@@ -65,13 +71,25 @@ export default function Profile() {
                 .doc(currentUser.uid)
                 .update({ avatarUrl: url })
                 .then(setProfile(null));
+
               loadProfile();
             });
         }
       );
     }
   }, [image, currentUser]);
-
+  const onEnterPress = (e) => {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      setBioClicked(false);
+      db.collection("users")
+        .doc(currentUser.uid)
+        .update({
+          bio: inputValue,
+        })
+        .then(loadProfile());
+    }
+  };
   useEffect(() => {
     loadProfile();
   }, []);
@@ -82,7 +100,7 @@ export default function Profile() {
       .get()
       .then((snapshot) => {
         setProfile(snapshot.data());
-        console.log("profile dwa");
+        setInputValue(snapshot.data().bio);
       });
   };
 
@@ -124,7 +142,12 @@ export default function Profile() {
             </div>
             {bioClicked ? (
               <div className="profile__bio">
-                <textarea ref={bioRef} defaultValue={profile.bio}></textarea>
+                <textarea
+                  ref={bioRef}
+                  onChange={onChangeHandler}
+                  value={inputValue}
+                  onKeyDown={onEnterPress}
+                ></textarea>
               </div>
             ) : (
               <div

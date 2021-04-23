@@ -20,6 +20,7 @@ export function AuthProvider({ children }) {
         username: username,
         following: 0,
         followed: 0,
+        bio: "",
       });
 
       cred.user.updateProfile({
