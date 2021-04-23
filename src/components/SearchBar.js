@@ -14,13 +14,14 @@ export default function SearchBar({ isOpen }) {
     db.collection("users")
       .get()
       .then(
-        (snapshot) =>
+        (snapshot) => {
           setUsers(
             snapshot.docs.map((doc) => ({
               id: doc.id,
               user: doc.data(),
             }))
-          ),
+          );
+        },
         (error) => {
           console.log(error);
         }

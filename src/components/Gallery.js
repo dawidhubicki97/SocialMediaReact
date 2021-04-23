@@ -49,6 +49,7 @@ export default function Gallery({ uid, owner }) {
           .get()
           .then(
             (snapshot) => {
+              console.log("gallery scroll");
               setPosts(
                 posts.concat(
                   snapshot.docs.map((doc) => ({

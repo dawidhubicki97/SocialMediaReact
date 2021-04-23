@@ -25,7 +25,6 @@ export default function Profile() {
   useEffect(() => {
     document.addEventListener("click", (event) => {
       if (bioRef.current && !bioRef.current.contains(event.target)) {
-        console.log("profil");
       }
     });
   }, []);
@@ -40,6 +39,7 @@ export default function Profile() {
       uploadTask.on(
         "state_changed",
         (snapshot) => {
+          console.log("profil");
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
@@ -67,8 +67,11 @@ export default function Profile() {
     db.collection("users")
       .doc(currentUser.uid)
       .get()
-      .then((snapshot) => setProfile(snapshot.data()));
-  }, [profile]);
+      .then((snapshot) => {
+        setProfile(snapshot.data());
+        console.log("profile dwa");
+      });
+  }, []);
 
   return (
     <div className="profile">
