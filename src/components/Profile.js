@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Profile.css";
 import { useAuth } from "../contexts/AuthContext";
+import EditIcon from "@material-ui/icons/Edit";
 import Avatar from "@material-ui/core/Avatar";
 import { storage, db } from "../firebase";
 import Gallery from "./Gallery";
+import ReadMore from "./ReadMore";
 import { TextareaAutosize } from "@material-ui/core";
 export default function Profile() {
   const { currentUser, logout } = useAuth();
@@ -150,13 +152,12 @@ export default function Profile() {
                 ></textarea>
               </div>
             ) : (
-              <div
-                className="profile__bio editable"
-                ref={bioRef}
-                onClick={clickBio}
-              >
-                {profile.bio}
-              </div>
+              <>
+                <div className="profile__bio" ref={bioRef}>
+                  <EditIcon className="editable" onClick={clickBio}></EditIcon>
+                  <ReadMore>{profile.bio}</ReadMore>
+                </div>
+              </>
             )}
           </div>
           <div className="profile__posts">
