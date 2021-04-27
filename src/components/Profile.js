@@ -27,18 +27,18 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", (event) => {
-      if (!bioRef.current.contains(event.target)) {
-        setBioClicked(false);
-      }
-    });
+    const handleClickOutsideDialog= (event: any) =>{
+        if (!bioRef.current.contains(event.target)) {
+            setBioClicked(false);
+          }
+    }
+      document.addEventListener("mousedown",handleClickOutsideDialog )
+      return () => { 
+        document.removeEventListener('mousedown', handleClickOutsideDialog);
+    }
+  
   }, []);
 
-  const handleClickOutside = (event) => {
-    if (bioRef.current && !bioRef.current.contains(event.target)) {
-      setBioClicked(!bioClicked);
-    }
-  };
   const clickBio = (e) => {
     setBioClicked(!bioClicked);
   };
