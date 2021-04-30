@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "../contexts/AuthContext";
 import Profile from "./Profile";
 import BrowseProfile from "./BrowseProfile";
 import Navbar from "./Navbar";
 import ImageUpload from "./ImageUpload";
 import "./Dashboard.css";
 import PrivateRoute from "./PrivateRoute";
-import { useHistory } from "react-router-dom";
+import SearchResults from "./SearchResults";
 import Gallery from "./Gallery";
 import { withRouter } from "react-router";
+
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -16,7 +16,6 @@ export default function Dashboard() {
       setIsOpen(false);
     });
   }, []);
-  const history = useHistory();
   return (
     <div className="dashboard">
       <Navbar isOpen={isOpen}></Navbar>
@@ -36,6 +35,11 @@ export default function Dashboard() {
       <PrivateRoute
         path="/home/addpost"
         component={withRouter(ImageUpload)}
+      ></PrivateRoute>
+      <PrivateRoute
+        exact
+        path="/home/search/:word"
+        component={withRouter(SearchResults)}
       ></PrivateRoute>
     </div>
   );

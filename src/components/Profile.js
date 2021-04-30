@@ -6,7 +6,6 @@ import Avatar from "@material-ui/core/Avatar";
 import { storage, db } from "../firebase";
 import Gallery from "./Gallery";
 import ReadMore from "./ReadMore";
-import { TextareaAutosize } from "@material-ui/core";
 export default function Profile() {
   const { currentUser, logout } = useAuth();
   const hiddenFileInput = React.useRef(null);
@@ -27,16 +26,15 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    const handleClickOutsideDialog= (event: any) =>{
-        if (!bioRef.current.contains(event.target)) {
-            setBioClicked(false);
-          }
-    }
-      document.addEventListener("mousedown",handleClickOutsideDialog )
-      return () => { 
-        document.removeEventListener('mousedown', handleClickOutsideDialog);
-    }
-  
+    const handleClickOutsideDialog = (event: any) => {
+      if (!bioRef.current.contains(event.target)) {
+        setBioClicked(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutsideDialog);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideDialog);
+    };
   }, []);
 
   const clickBio = (e) => {

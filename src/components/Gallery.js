@@ -4,6 +4,7 @@ import "./Post.css";
 import { Button } from "@material-ui/core";
 import { db } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
+
 export default function Gallery({ uid, owner }) {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   const [posts, setPosts] = useState([]);

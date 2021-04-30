@@ -130,7 +130,12 @@ export default function Post({
           </div>
         )}
         <div className="post__cardBody">
-          <img className="post__img" src={imageUrl} onClick={openModal}></img>
+          <img
+            className="post__img"
+            alt=""
+            src={imageUrl}
+            onClick={openModal}
+          ></img>
           <SpecificPost
             showModal={showModal}
             openModal={openModal}

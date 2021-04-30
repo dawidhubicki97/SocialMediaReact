@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
+import { useHistory } from "react-router-dom";
 import "./Dashboard.css";
 import SearchHints from "./SearchHints";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -8,6 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import OutsideClickHandler from "react-outside-click-handler";
 export default function SearchBar({ isOpen }) {
   const [users, setUsers] = useState([]);
+  const history = useHistory();
   const [clickedOutside, setClickedOutside] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
@@ -41,6 +43,12 @@ export default function SearchBar({ isOpen }) {
     console.log(isOpen);
   };
 
+  const enterPress = (e) => {
+    if (e.keyCode == 13) {
+      history.replace("/home/search/" + searchTerm);
+    }
+  };
+
   return (
     <OutsideClickHandler
       onOutsideClick={() => {
@@ -64,6 +72,7 @@ export default function SearchBar({ isOpen }) {
             ),
           }}
           onChange={handleChange}
+          onKeyDown={enterPress}
         ></TextField>
 
         {dynamicChange() && clickedOutside && (

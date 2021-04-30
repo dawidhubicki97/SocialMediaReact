@@ -93,7 +93,6 @@ export default function BrowseProfile() {
                 <Button
                   type="submit"
                   variant="contained"
-                  type="submit"
                   className="profile__followButton"
                   onClick={handleFollowButton}
                 >

@@ -75,7 +75,7 @@ export default function Login() {
 
       <div className="login__rightContainer">
         {background ? (
-          <img src={background}></img>
+          <img src={background} alt="background"></img>
         ) : (
           <div style={{ width: "100%", height: "100%" }}></div>
         )}

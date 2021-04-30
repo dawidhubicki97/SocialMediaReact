@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import logo from "../images/navlogo.png";
@@ -23,20 +23,6 @@ export default function Navbar({ isOpen }) {
       setError("Nie udało się wylogować");
     }
   }
-  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <a
-      href=""
-      ref={ref}
-      onClick={(e) => {
-        e.preventDefault();
-        onClick(e);
-      }}
-    >
-      <PersonIcon style={{ fontSize: 80 }} />
-
-      {children}
-    </a>
-  ));
 
   function handleProfileClick(e) {
     history.replace("/home/profile");
@@ -61,7 +47,7 @@ export default function Navbar({ isOpen }) {
             className="dashboard__headerLogo"
             style={{ borderBottom: "solid 1px lightgray" }}
           >
-            <img className="dashboard__headerImage" src={logo} />
+            <img className="dashboard__headerImage" src={logo} alt="" />
           </div>
           <div
             className="dashboard__menuSlideItem"
@@ -98,6 +84,7 @@ export default function Navbar({ isOpen }) {
             onClick={handleLogoClick}
             className="dashboard__headerImage"
             src={logo}
+            alt=""
           />
         </div>
         <div className="dashboard__searchbar">
