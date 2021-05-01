@@ -6,23 +6,6 @@ import defaulAvatar from "../images/defaultuser.png";
 export default function Result({ user }) {
   const [profilePic, setprofilePic] = useState(null);
 
-  useEffect(() => {
-    /*
-    storage
-      .ref(user.avatarURL)
-      .getDownloadURL()
-      .then((url) => {
-        console.log(url);
-        setprofilePic(url);
-      })
-      .catch((error) => {
-        console.log(error);
-        setprofilePic(defaulAvatar);
-      });
-      */
-    console.log(user.avatarUrl);
-  }, []);
-
   {
     return (
       <div className="searchResults__card">

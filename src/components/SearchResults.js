@@ -13,7 +13,7 @@ export default function SearchResults() {
     db.collection("users")
       .where("username", ">=", word)
       .where("username", "<=", word + "~")
-      .limit(1)
+      .limit(8)
       .get()
       .then((snapshot) => {
         setUsers(
@@ -32,7 +32,7 @@ export default function SearchResults() {
         .where("username", ">=", word)
         .where("username", "<=", word + "~")
         .startAfter(lastVisible)
-        .limit(1)
+        .limit(8)
         .get()
         .then((snapshot) => {
           setUsers(
@@ -52,9 +52,18 @@ export default function SearchResults() {
     <div className="searchResults">
       {users &&
         users.map(({ id, user }) => <Result key={id} user={user}></Result>)}
-      <Button variant="contained" color="primary" onClick={addPostsScroll}>
-        Załaduj więcej
-      </Button>
+      <div className="searchResults__loadButton">
+        {lastVisible && (
+          <Button
+            variant="contained"
+            color="primary"
+            className="searchResults__button"
+            onClick={addPostsScroll}
+          >
+            Załaduj więcej
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
