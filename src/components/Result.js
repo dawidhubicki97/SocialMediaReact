@@ -25,10 +25,15 @@ export default function Result({ user }) {
 
   {
     return (
-      <div className="searchResults_result">
-        <Avatar src={user.avatarUrl} className="searchResults__avatar"></Avatar>
-        <div className="searchResults__username">{user.username}</div>
-        <div className="searchResults__bio">{user.bio}</div>
+      <div className="searchResults__card">
+        <div className="searchResults__cardBod">
+          <Avatar
+            src={user.avatarUrl}
+            className="searchResults__avatar"
+          ></Avatar>
+          <div className="searchResults__username">{user.username}</div>
+          <div className="searchResults__bio">{user.bio}</div>
+        </div>
       </div>
     );
   }
