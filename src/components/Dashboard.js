@@ -4,6 +4,7 @@ import BrowseProfile from "./BrowseProfile";
 import Navbar from "./Navbar";
 import ImageUpload from "./ImageUpload";
 import "./Dashboard.css";
+
 import PrivateRoute from "./PrivateRoute";
 import SearchResults from "./SearchResults";
 import Gallery from "./Gallery";

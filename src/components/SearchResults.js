@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
+import "./Dashboard.css";
 import { useParams } from "react-router-dom";
+import Result from "./Result";
+
 export default function SearchResults() {
   const { word } = useParams();
   const [users, setUsers] = useState(null);
@@ -20,8 +23,9 @@ export default function SearchResults() {
       });
   }, []);
   return (
-    <div>
-      {users && users.map(({ id, user }) => <div>{user.username}</div>)}
+    <div className="searchResults">
+      {users &&
+        users.map(({ id, user }) => <Result key={id} user={user}></Result>)}
     </div>
   );
 }

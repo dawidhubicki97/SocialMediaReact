@@ -90,6 +90,32 @@
   border: 1px solid lightgray;
   margin: auto;
 }
+.searchResults {
+  padding: 20px;
+}
+.searchResults_result {
+  background-color: #d3d3d3;
+  width: 40%;
+  height: 60px;
+  overflow: hidden;
+  margin: auto;
+  padding: 5px;
+  margin-top: 1%;
+  border-radius: 20px;
+}
+.searchResults_result:hover {
+  opacity: 0.7;
+}
+.searchResults__avatar {
+  float: left;
+  margin-right: 5px;
+}
+.searchResults__username {
+  font-weight: bold;
+  font-size: large;
+}
+.searchResults__bio {
+}
 @media (max-width: 768px) {
   .imageUpload__temporaryImage {
     max-width: 400px;

@@ -40,7 +40,6 @@ export default function SearchBar({ isOpen }) {
     setClickedOutside(true);
     setSearchTerm(e.target.value);
     dynamicChange();
-    console.log(isOpen);
   };
 
   const enterPress = (e) => {
