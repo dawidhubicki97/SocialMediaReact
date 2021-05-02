@@ -141,6 +141,16 @@
 .searchResults__bio {
 }
 .searchResults__notFound {
+  width: 50%;
+  overflow: visible;
+  margin: auto;
+}
+.searchResults__notFoundUp {
+  font-weight: bold;
+  font-size: x-large;
+}
+.searchResults__notFoundDown {
+  font-weight: lighter;
 }
 @media (max-width: 768px) {
   .imageUpload__temporaryImage {
