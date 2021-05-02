@@ -125,7 +125,8 @@
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 4px 2px 2px grey;
+  border: 1px solid rgba(194, 159, 159, 0.125);
 }
 .searchResults__cardBody {
   flex: 1 1 auto;
@@ -138,6 +139,8 @@
   margin: auto;
 }
 .searchResults__bio {
+}
+.searchResults__notFound {
 }
 @media (max-width: 768px) {
   .imageUpload__temporaryImage {
