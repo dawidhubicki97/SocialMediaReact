@@ -5,6 +5,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { Button } from "@material-ui/core";
 import { db } from "../firebase";
 import firebase from "firebase/app";
+import ReadMore from "./ReadMore";
 import { useParams } from "react-router-dom";
 import Gallery from "./Gallery";
 export default function BrowseProfile() {
@@ -93,6 +94,7 @@ export default function BrowseProfile() {
                 <Button
                   type="submit"
                   variant="contained"
+                  color="primary"
                   className="profile__followButton"
                   onClick={handleFollowButton}
                 >
@@ -106,7 +108,9 @@ export default function BrowseProfile() {
                 Obserwowani: <b>{profile.following}</b>
               </div>
             </div>
-            <div className="profile__bio">{profile.bio}</div>
+            <div className="profile__bio">
+              <ReadMore>{profile.bio}</ReadMore>
+            </div>
           </div>
           <div className="profile__posts">
             <Gallery uid={uid}></Gallery>
