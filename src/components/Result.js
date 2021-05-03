@@ -15,6 +15,7 @@ export default function Result({ resultKey, user }) {
         <div className="searchResults__cardBod">
           {user.avatarUrl ? (
             <Avatar
+              style={{ height: "80px", width: "80px" }}
               src={user.avatarUrl}
               className="searchResults__avatar"
             ></Avatar>

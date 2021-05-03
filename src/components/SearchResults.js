@@ -13,7 +13,7 @@ export default function SearchResults() {
     db.collection("users")
       .where("username", ">=", word)
       .where("username", "<=", word + "~")
-      .limit(8)
+      .limit(6)
       .get()
       .then((snapshot) => {
         if (!snapshot.empty) {
@@ -38,7 +38,7 @@ export default function SearchResults() {
         .where("username", ">=", word)
         .where("username", "<=", word + "~")
         .startAfter(lastVisible)
-        .limit(8)
+        .limit(6)
         .get()
         .then((snapshot) => {
           setUsers(
