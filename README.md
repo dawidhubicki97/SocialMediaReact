@@ -27,3 +27,7 @@ Password: 123456
 	- Following other users and getting their photos on the feed
 	- Setting a profile picture and changing the bio
 	- Searching another users with the search engine
+## Technologies
+- ReactJs
+- Firebase
+- Material-UI
