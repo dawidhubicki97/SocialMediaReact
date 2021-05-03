@@ -2,7 +2,7 @@
 
 ## Description
 
-Social Media Application for sharing pictures and commenting pictures.
+Social Media Application for pictures and commenting pictures.
 
 ## Live
 
