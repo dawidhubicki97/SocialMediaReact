@@ -1,8 +1,11 @@
 import React, { useRef, useState } from "react";
 import { Button } from "@material-ui/core";
 import background from "../images/8741.jpg";
+import backgroundsmall from "../images/8741_tiny.jpg";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import ProgressiveImage from "react-progressive-image-loading";
+
 import "./Login.css";
 
 export default function Login() {
@@ -12,7 +15,6 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -74,11 +76,12 @@ export default function Login() {
       </div>
 
       <div className="login__rightContainer">
-        {background ? (
-          <img src={background} alt="background"></img>
-        ) : (
-          <div style={{ width: "100%", height: "100%" }}></div>
-        )}
+        <ProgressiveImage
+          src={background}
+          preview={backgroundsmall}
+          alt="background"
+          render={(src, style) => <img src={src} style={style} />}
+        />
       </div>
     </div>
   );

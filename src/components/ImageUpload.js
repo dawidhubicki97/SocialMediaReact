@@ -74,7 +74,7 @@ export default function ImageUpload() {
   return (
     <div className="imageUpload">
       <div className="imageUpload__imageContainer">
-        <label className="imageUpload__imageLabel" for="upload__file">
+        <label className="imageUpload__imageLabel" htmlFor="upload__file">
           {image ? (
             <Image
               className="imageUpload__temporaryImage"

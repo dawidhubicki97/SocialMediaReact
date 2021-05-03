@@ -51,7 +51,6 @@ export default function SpecificPost({ showModal, openModal, postKey, post }) {
       .collection("likes")
       .doc(currentUser.uid)
       .onSnapshot((snapshot) => {
-        console.log(snapshot.exists);
         if (snapshot.exists) setIsLiked(true);
         else setIsLiked(false);
       });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { storage } from "../firebase";
 import "./Dashboard.css";
 import { useHistory } from "react-router-dom";
