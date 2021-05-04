@@ -208,6 +208,7 @@
     overflow: auto;
   }
   .postDetails__container {
+    border-radius: 0;
     min-width: 100px;
     overflow: hidden;
     width: 100%;

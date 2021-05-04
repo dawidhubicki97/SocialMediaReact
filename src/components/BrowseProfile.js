@@ -84,11 +84,11 @@ export default function BrowseProfile() {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   className="profile__followButton"
                   onClick={handleFollowButton}
                 >
-                  Przestań Obserwować
+                  Usuń
                 </Button>
               ) : (
                 <Button
