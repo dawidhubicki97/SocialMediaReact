@@ -17,11 +17,23 @@ export default function Login() {
   const history = useHistory();
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
+    } catch {
+      setError("Nie udało się zalogować");
+    }
+    setLoading(false);
+  }
+
+  async function handleTest(e) {
+    e.preventDefault();
+    try {
+      setError("");
+      setLoading(true);
+      await login("test@gmail.com", "123456");
       history.push("/");
     } catch {
       setError("Nie udało się zalogować");
@@ -72,6 +84,17 @@ export default function Login() {
           <Link to="/signup">
             <b>Zarejestruj się</b>
           </Link>
+          <div>
+            <Button
+              onClick={handleTest}
+              disabled={loading}
+              variant="contained"
+              color="secondary"
+              className="w-50"
+            >
+              Demo
+            </Button>
+          </div>
         </div>
       </div>
 
