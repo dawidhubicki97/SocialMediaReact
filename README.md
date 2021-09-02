@@ -6,7 +6,7 @@ Social Media Application for pictures and commenting pictures.
 
 ## Live
 
-Live Example: https://socialmediaappdh.netlify.app <br>
+Live Example: https://social-media-app-dh.netlify.app/ <br>
 Login: test@gmail.com<br>
 Password: 123456
 
